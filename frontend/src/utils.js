@@ -13,7 +13,7 @@ function locationToArray(loc) {
 }
 
 function getIcon(icon) {
-    return 'http://localhost:5173/images/icons/' + icon;
+  return '/icons/' + icon;
 }
 
 export {
