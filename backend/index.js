@@ -346,8 +346,3 @@ app.post('/api/incident-by-date', async (req, res) => {
     }
 });
 
-// ✅ Start the Express server
-const PORT = process.env.PORT || 2000;
-app.listen(PORT, () => {
-    console.log("Express server is running and listening on port " + PORT);
-});
