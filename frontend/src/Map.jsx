@@ -32,14 +32,14 @@ function Map() {
   const [connectionInfo, setConnectionInfo] = useState({ type: null, id: null });
 
   useEffect(() => {
-    fetch('http://localhost:2000/api/incident-types')
+    fetch('https://drms-production.up.railway.app/api/incident-types')
       .then(response => response.json())
       .then(json => setIncidentTypes(json))
       .catch(error => console.error(error));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:2000/api/resource-types')
+    fetch('https://drms-production.up.railway.app/api/resource-types')
       .then(response => response.json())
       .then(json => setResourceTypes(json))
       .catch(error => console.error(error));
@@ -50,7 +50,7 @@ function Map() {
   }, []);
 
   function loadData() {
-    fetch('http://localhost:2000/get-data')
+    fetch('https://drms-production.up.railway.app/get-data')
       .then(response => response.json())
       .then(json => setData(prepareData(json)))
       .catch(error => console.error(error));
@@ -110,7 +110,7 @@ function Map() {
   }
 
   function handleAddIncident(location, type, radius) {
-    fetch('http://localhost:2000/add-incident', {
+    fetch('https://drms-production.up.railway.app/add-incident', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ function Map() {
   }
 
   function handleAddResource(location, type, quantity) {
-    fetch('http://localhost:2000/add-resource', {
+    fetch('https://drms-production.up.railway.app/add-resource', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ function Map() {
   }
 
   function handleDeleteResource(id) {
-    fetch('http://localhost:2000/api/resources/' + id, {
+    fetch('https://drms-production.up.railway.app/api/resources/' + id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ function Map() {
   }
 
   function handleDeleteIncident(id) {
-    fetch('http://localhost:2000/api/incidents/' + id, {
+    fetch('https://drms-production.up.railway.app/api/incidents/' + id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ function Map() {
   }
 
   function handleAddConnection(incidentId, resourceId) {
-    fetch('http://localhost:2000/api/connection', {
+    fetch('https://drms-production.up.railway.app/api/connection', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ function Map() {
   }
 
   function handleDeleteConnection(incidentId, resourceId) {
-    fetch('http://localhost:2000/api/connection/' + incidentId + '/' + resourceId, {
+    fetch('https://drms-production.up.railway.app/api/connection/' + incidentId + '/' + resourceId, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
