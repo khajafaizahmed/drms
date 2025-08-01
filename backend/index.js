@@ -10,8 +10,20 @@ app.use(bodyParser.json());
 let dbConnection;
 
 (async () => {
-    dbConnection = await getDbConnection();
+    try {
+        dbConnection = await getDbConnection();
+        console.log("✅ Connected to DB");
+
+        const PORT = process.env.PORT || 2000;
+        app.listen(PORT, () => {
+            console.log("🚀 Express server is running and listening on port " + PORT);
+        });
+    } catch (err) {
+        console.error("❌ Failed to connect to the database:", err.message);
+        process.exit(1); // Stop app if DB fails
+    }
 })();
+
 
 // Fetch all data
 app.get('/get-data', async (req, res) => {
