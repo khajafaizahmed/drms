@@ -1,19 +1,21 @@
+const BASE_URL = "https://drms-backend.up.railway.app";
+
 function getIncidents(onSuccess, onFailure) {
-    fetch(`http://localhost:2000/api/incidents`)
+    fetch(`${BASE_URL}/api/incidents`)
         .then(response => response.json())
         .then(json => onSuccess(json))
         .catch(error => onFailure(error));
 }
 
 function getIndicentResourceAnalysis(incidentId, onSuccess, onFailure) {
-    fetch(`http://localhost:2000/api/incident-resource-analysis/${incidentId}`)
+    fetch(`${BASE_URL}/api/incident-resource-analysis/${incidentId}`)
         .then(response => response.json())
         .then(json => onSuccess(json))
         .catch(error => onFailure(error));
 }
 
 function getEntityConnectionNum(minConnectionNum, onSuccess, onFailure) {
-    fetch(`http://localhost:2000/api/entity-connection-num`, {
+    fetch(`${BASE_URL}/api/entity-connection-num`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +30,7 @@ function getEntityConnectionNum(minConnectionNum, onSuccess, onFailure) {
 }
 
 function getResourcesInRadius(incidentId, radius, onSuccess, onFailure) {
-    fetch(`http://localhost:2000/api/incident-resouces-in-radius`, {
+    fetch(`${BASE_URL}/api/incident-resouces-in-radius`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +50,7 @@ function dateToSql(date) {
 }
 
 function getIncidentsByDate(start, end, onSuccess, onFailure) {
-    fetch(`http://localhost:2000/api/incident-by-date`, {
+    fetch(`${BASE_URL}/api/incident-by-date`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
